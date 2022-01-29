@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import styles from "../../styles/ConsoleLayout.module.scss";
-import logo from "../../assets/logo.svg";
 
 interface Props {
   children: React.ReactNode;
@@ -15,10 +14,6 @@ export default function ConsoleLayout({ children }: Props) {
       <Row>
         <Col lg={3} className={styles.container}>
           <div className={styles.consoleNavbar}>
-            <div>
-              <img src={logo} alt="Project Upskill" height={60} width={120} />
-            </div>
-            <div></div>
             <a href="">
               <div className={styles.navBarItem}>
                 <a href="#">Dashboard</a>

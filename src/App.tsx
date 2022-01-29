@@ -17,7 +17,7 @@ function App() {
                 <Route index element={<Article />} />
               </Route>
             </Route>
-            <Route path="admin">
+            <Route path="console">
               <Route index element={<Console />} />
             </Route>
           </Route>

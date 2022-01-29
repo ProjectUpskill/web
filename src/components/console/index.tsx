@@ -1,5 +1,6 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import styles from "../../styles/ConsoleLayout.module.scss";
 
 export default function Dashboard() {
@@ -21,43 +22,43 @@ export default function Dashboard() {
           <li>Access Editors and Moderators Tools</li>
           and much more!
         </ul>
-      </div>{" "}
+      </div>
       <div className={styles.dashboardTitle}>
         <h1>Common Actions</h1>
       </div>
       <div className={styles.content}>
         <Row className={styles.commonActions}>
           <Col>
-            <a className="item" href="/console/create">
+            <Link to="/console/edit" className={`btn ${styles.button}`}>
               ✏️ Create Article
-            </a>
+            </Link>
           </Col>
           <Col>
-            <a className="item" href="/console/create">
+            <Link to="/console/edit" className={`btn ${styles.button}`}>
               📝 Find Article
-            </a>
+            </Link>
           </Col>
           <Col>
-            <a className="item" href="/console/create">
+            <Link to="/console/create" className={`btn ${styles.button}`}>
               👤 Change Password
-            </a>
+            </Link>
           </Col>
         </Row>
         <Row className={styles.commonActions}>
           <Col>
-            <a className="item" href="/console/create">
+            <Link to="/console/create" className={`btn ${styles.button}`}>
               🖥️ Editors Queue
-            </a>
+            </Link>
           </Col>
           <Col>
-            <a className="item" href="/console/create">
+            <Link to="/console/create" className={`btn ${styles.button}`}>
               ❗ Report User
-            </a>
+            </Link>
           </Col>
           <Col>
-            <a className="item" href="/console/create">
+            <Link to="/console/create" className={`btn ${styles.button}`}>
               🔍 Mod User Search
-            </a>
+            </Link>
           </Col>
         </Row>
       </div>
