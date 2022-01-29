@@ -1,0 +1,47 @@
+.previewCardImgOverlay {
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  background-color: rgb(33, 37, 41, 0.5);
+  color: #fff;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 0px !important;
+  z-index: 99;
+}
+
+.preview {
+  border: none !important;
+  position: relative;
+
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
+  -ms-animation: fadein 2s; /* Internet Explorer */
+  -o-animation: fadein 2s; /* Opera < 12.1 */
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.previewCardImgOverlay:hover {
+  background-color: rgb(33, 37, 41, 0.9);
+}
+
+.previewHeading {
+  color: #ddd;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  font-size: 1rem;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+}
+
+.previewHeading:hover {
+  color: #aaa;
+}
