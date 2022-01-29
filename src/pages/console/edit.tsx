@@ -3,12 +3,12 @@ import { Row, Col, Button, Form } from "react-bootstrap";
 import styles from "../../styles/ConsoleLayout.module.scss";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { useArticleMarkdown } from "../../hooks/article";
+import { useParams } from "react-router-dom";
 
-export interface Props {
-  articleName: string;
-}
+export default function Edit() {
+  const { articleId } = useParams();
+  const articleName = articleId || "how-to-cook-an-egg";
 
-export default function Edit({ articleName }: Props) {
   function save() {
     if (isArticle) {
       setMarkdown(pendingMarkdown);

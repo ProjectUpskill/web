@@ -6,7 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Badge from "react-bootstrap/Badge";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -25,11 +25,7 @@ import useAuth from "../hooks/auth";
 import logo from "../assets/logo.svg";
 import profile from "../assets/profile.png";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function Layout({ children }: Props) {
+export default function Layout() {
   const { user, signIn, signOut } = useAuth();
 
   return (
@@ -104,7 +100,9 @@ export default function Layout({ children }: Props) {
           </Nav>
         </Container>
       </Navbar>
-      <main>{children}</main>
+      <main>
+        <Outlet />
+      </main>
       <footer className={styles.footer}>
         <Row>
           <Col>

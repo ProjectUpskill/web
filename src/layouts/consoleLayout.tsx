@@ -2,13 +2,11 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import styles from "../../styles/ConsoleLayout.module.scss";
+import styles from "../styles/ConsoleLayout.module.scss";
 
-interface Props {
-  children: React.ReactNode;
-}
+import { Outlet } from "react-router-dom";
 
-export default function ConsoleLayout({ children }: Props) {
+export default function ConsoleLayout() {
   return (
     <Container>
       <Row>
@@ -218,7 +216,7 @@ export default function ConsoleLayout({ children }: Props) {
           </div>
         </Col>
         <Col lg={9} className={styles.consoleContent}>
-          {children}
+          <Outlet />
         </Col>
       </Row>
     </Container>

@@ -1,28 +1,36 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/layout";
+import Layout from "./layouts/layout";
+import ConsoleLayout from "./layouts/consoleLayout";
+import StandardLayout from "./layouts/standardLayout";
 import Home from "./pages";
 import Article from "./pages/article";
-import Console from "./pages/console";
+import Dashboard from "./pages/console/dashboard";
+import Edit from "./pages/console/edit";
 
 function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route path="/">
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route element={<StandardLayout />}>
             <Route index element={<Home />} />
-            <Route path="articles">
-              <Route path=":articleId">
-                <Route index element={<Article />} />
-              </Route>
-            </Route>
-            <Route path="console">
-              <Route index element={<Console />} />
+          </Route>
+          <Route path="articles">
+            <Route path=":articleId">
+              <Route index element={<Article />} />
             </Route>
           </Route>
-        </Routes>
-      </Layout>
+          <Route path="console" element={<ConsoleLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="edit">
+              <Route path=":articleId">
+                <Route index element={<Edit />} />
+              </Route>
+            </Route>
+          </Route>
+        </Route>
+      </Routes>
     </Router>
   );
 }
