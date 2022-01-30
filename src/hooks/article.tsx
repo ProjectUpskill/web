@@ -24,7 +24,7 @@ export default function useArticle(id: string) {
       components: {
         h1: (props: h1Props) => (
           <h1 {...props}>
-            {Object.values(props)} <a href={`/edit-article/${id}`}>✏️</a>
+            {Object.values(props)} <a href={`/console/edit/${id}`}>✏️</a>
           </h1>
         ),
         img: (props: ImageProps) => (
