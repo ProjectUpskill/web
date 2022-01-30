@@ -28,7 +28,7 @@ export default function Sidebar({ topArticles, topContributors }: Props) {
       <Contributors
         contributors={topContributors}
         name={"👥 Top Contributors"}
-        desc={"Our most valuable contributors"}
+        desc={"Our most active contributors"}
         star={false}
       />
     </>

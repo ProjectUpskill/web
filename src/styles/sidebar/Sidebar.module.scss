@@ -7,8 +7,8 @@
 
 .sidebarContent {
   padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .sidebarBox:first-child {
@@ -23,13 +23,12 @@
 }
 
 .sidebarBox {
-  background-color: #4785b5;
+  background-color: #e9ecef;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
   margin-top: 10px;
   margin-bottom: 10px;
-  color: #d6e4ef;
-  font-size: 1rem;
+  color: rgb(2, 2, 2);
+  font-size: 0.9rem;
 }
 
 .sidebarBoxStarred {
@@ -38,7 +37,7 @@
 }
 
 .sidebarBox a {
-  color: #d6e4ef;
+  color: hsl(207, 14%, 25%);
   font-size: 0.9em;
 }
 
@@ -74,6 +73,11 @@
   color: #d4d4d4;
   padding: 20px;
   margin: 0px;
+  font-size: 1.2em;
+}
+
+.sidebarMarkdownContent ul li {
+  margin-left: -5px;
 }
 
 .sidebarBox a:hover {
@@ -96,7 +100,7 @@
   background-color: #2791bb !important;
   color: #e9e9f3 !important;
 }
-.topArticles li:last-child hr,
+.topArticles div:last-child hr,
 .topArticles:last-child > hr:last-child {
   height: 0px !important;
 }

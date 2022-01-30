@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import styles from "../../styles/ConsoleLayout.module.scss";
 import "@toast-ui/editor/dist/toastui-editor.css";
@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 export default function Edit() {
   const { articleId } = useParams();
-  const articleName = articleId || "how-to-cook-an-egg";
+  const articleName = articleId || "";
 
   function save() {
     if (isArticle) {
@@ -24,6 +24,7 @@ export default function Edit() {
   const [pendingMarkdown, setPendingMarkdown] = useState("");
   const [pendingMarkdownSidebar, setPendingMarkdownSidebar] = useState("");
   const [isArticle, setIsArticle] = useState<boolean>(true);
+
   const content = useArticleMarkdown(
     articleName.split(" ").join("-").toLowerCase()
   );
@@ -32,15 +33,23 @@ export default function Edit() {
   );
 
   useEffect(() => {
+    if (content != undefined)
+    {
     setMarkdown(content);
+    }
   }, [content]);
 
   useEffect(() => {
+    if (contentSidebar != undefined)
+    {
+
     setMarkdownSidebar(contentSidebar);
+    }
   }, [contentSidebar]);
 
   useEffect(() => {
-    if (markdownSidebar != "" && markdown != "") {
+    if (      markdown != undefined &&
+      markdownSidebar != undefined) {
       const editorArticleInit = async () => {
         const { Editor } = await import("@toast-ui/editor");
         const el = document.querySelector("#editor");
@@ -55,6 +64,7 @@ export default function Edit() {
             initialValue: markdown,
             minHeight: "1000px",
             height: "1000px",
+
             initialEditType: "wysiwyg",
           });
         }
@@ -72,7 +82,7 @@ export default function Edit() {
                 setPendingMarkdownSidebar(editor.getMarkdown());
               },
             },
-            initialValue: contentSidebar,
+            initialValue: markdownSidebar,
             minHeight: "1000px",
             height: "1000px",
             initialEditType: "wysiwyg",
@@ -81,7 +91,7 @@ export default function Edit() {
       };
       editorSidebarInit();
     }
-  }, [content, contentSidebar]);
+  }, [markdown, markdownSidebar]);
 
   return (
     <div className={styles.dashboard}>

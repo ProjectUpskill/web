@@ -1,3 +1,4 @@
+import { ImageProps } from "react-bootstrap";
 import { useRemarkSync } from "react-remark";
 import useSWR from "swr";
 import sectionize from "../lib/sectionize";
@@ -26,15 +27,14 @@ export default function useArticle(id: string) {
             {Object.values(props)} <a href={`/edit-article/${id}`}>✏️</a>
           </h1>
         ),
-        /*img: (props) => (
-          <Image
+        img: (props: ImageProps) => (
+          <img
             {...props}
-            layout="responsive"
-            width={680}
+            width={"100%"}
             height={300}
-            objectFit="cover"
+            object-fit="cover"
           />
-        ),*/
+        ),
       },
     },
   });
@@ -43,8 +43,12 @@ export default function useArticle(id: string) {
 }
 
 export function useArticleMarkdown(id: string) {
+  
   const fetcher = (url: string) => fetch(url).then((res) => res.text());
   const { data, error } = useSWR(`/articles/${id}.md`, fetcher);
-  console.log(error);
+  if (id == "" || error) {
+    return "";
+  }
+  
   return data;
 }

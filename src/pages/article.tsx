@@ -12,7 +12,7 @@ import ArticleSidebar from "../components/sidebar/articleSidebar";
 
 export default function Article() {
   const reactContent = useArticle("cook-an-egg");
-  const reactRequirements = useArticle("cook-an-egg-requirements");
+  const reactRequirements = useArticle("cook-an-egg-sidebar");
   const beginnerArticles = getArticles(5);
   const advancedArticles = getArticles(5);
 

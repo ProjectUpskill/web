@@ -21,10 +21,10 @@ export default function RecommendedArticles({
         <div className={styles.topArticles}>
           <ol>
             {beginnerArticles.map((a) => (
-              <li key={a.title}>
+              <div key={a.title}>
                 <a href={a.url}>{a.title}</a>
                 <hr />
-              </li>
+              </div>
             ))}
           </ol>
         </div>
@@ -37,10 +37,10 @@ export default function RecommendedArticles({
         <div className={styles.topArticles}>
           <ol>
             {advancedArticles.map((a) => (
-              <li key={a.title}>
+              <div key={a.title}>
                 <a href={a.url}>{a.title}</a>
                 <hr />
-              </li>
+              </div>
             ))}
           </ol>
         </div>
