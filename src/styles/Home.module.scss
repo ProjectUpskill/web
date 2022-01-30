@@ -1,3 +1,4 @@
+
 .content {
   background-color: #e9ecef;
   padding: 20px;
@@ -7,4 +8,34 @@
   padding-left: 0px;
   padding-right: 0px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.construction {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(240, 240, 240) !important;
+  color: #333;
+}
+
+.constructionBox {
+  background-color: rgb(250, 250, 250) !important;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.constructionBox > div div {
+  margin-top: 20px;
+}
+
+.constructionBox h1 {
+  font-size: 1.3em;
+}
+
+.constructionBox a {
+  color: rgb(32, 72, 204) !important;
+
+}
+
+.constructionBox a:hover {
+  color: rgb(129, 153, 230) !important;
+
 }
