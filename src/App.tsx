@@ -27,6 +27,9 @@ function App() {
               <Route index element={<Home />} />
               <Route path='*' element={<Error404 />} />
             </Route>
+            <Route  path="/article/:articleId"  element={<Article />}>
+              </Route>
+
             <Route path="console" element={<ConsoleLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="edit-article">

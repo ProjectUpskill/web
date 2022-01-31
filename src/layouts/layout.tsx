@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import styles from "../styles/Layout.module.scss";
 
 import Container from "react-bootstrap/Container";
@@ -18,6 +18,7 @@ import {
   faHome,
   faWarehouse,
   faMoneyBill,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 import logo from "../assets/logo.svg";
@@ -33,6 +34,8 @@ export default function Layout() {
   useEffect(() => {
     authService.getUser().then((user) => setUser(user));
   }, []);
+
+  const idToken = useMemo(() => user?.id_token, [user])
 
   return (
     <Container>
@@ -79,12 +82,16 @@ export default function Layout() {
               <Nav.Link as={Link} to="/donate">
                 <FontAwesomeIcon icon={faMoneyBill} /> Donate
               </Nav.Link>
-              <Nav.Link as={Link} to="/console">
-                <FontAwesomeIcon icon={faWarehouse} /> Console
-              </Nav.Link>
-              <Nav.Link as={Link} to="/articles/new">
+
+              {user ? 
+                (<><Nav.Link as={Link} to="/console">
+                  <FontAwesomeIcon icon={faWarehouse} /> Console
+                </Nav.Link>
+
+              <Nav.Link as={Link} to="/console/create-article">
                 <FontAwesomeIcon icon={faPlusSquare} /> Create{" "}
-              </Nav.Link>
+              </Nav.Link></>)  : ""
+}
               <Nav.Link href="https://discourse.projectupskill.org/">
                 <FontAwesomeIcon icon={faComments} /> Chat
               </Nav.Link>
@@ -95,8 +102,11 @@ export default function Layout() {
               className={styles.profileDropdown}
               title={
                 <span style={{ position: "relative" }}>
-                  <img src={profile} width={32} height={32} alt="Profile" />
-                  <Badge className={styles.notification}>9</Badge>
+                  {user ? 
+
+                  (<><img src={profile} width={32} height={32} alt="Profile" />
+                  <Badge className={styles.notification}>9</Badge></>): <><FontAwesomeIcon icon={faUser} /> <span>Account</span></>}
+                  
                 </span>
               }
               id="profileDropdown"

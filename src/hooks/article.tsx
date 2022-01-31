@@ -9,13 +9,13 @@ type h1Props = React.DetailedHTMLProps<
 >;
 
 export default function useArticle(id: string) {
-  const fetcher = (url: string) => fetch(url).then((res) => res.text());
-  const { data, error } = useSWR(`/articles/${id}.md`, fetcher);
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const { data, error } = useSWR(`https://api.projectupskill.org/article/${id}`, fetcher);
 
   const text = error
     ? "Article failed to load."
     : data
-    ? data
+    ? data["versions"][0]["content"]
     : "Loading article...";
 
   const reactContent = useRemarkSync(text, {
@@ -45,7 +45,7 @@ export default function useArticle(id: string) {
 export function useArticleMarkdown(id: string) {
   
   const fetcher = (url: string) => fetch(url).then((res) => res.text());
-  const { data, error } = useSWR(`/articles/${id}.md`, fetcher);
+  const { data, error } = useSWR(`http://api.projectupskill.org/article/${id}`, fetcher);
   if (id === "" || id === "-sidebar" || error) {
     return "";
   }
