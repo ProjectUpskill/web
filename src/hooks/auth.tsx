@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Auth, { CognitoUser } from "@aws-amplify/auth";
 
-const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
 
 const useAuth = () => {
   const [user, setUser] = useState<CognitoUser>();
