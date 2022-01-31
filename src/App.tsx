@@ -13,6 +13,8 @@ import { Logout } from "./pages/auth/logout";
 import { LogoutCallback } from "./pages/auth/logoutCallback";
 import { SilentRenew } from "./pages/auth/silentRenew";
 import { AuthProvider } from "./providers/AuthProvider";
+import Error404 from "./pages/404";
+import Profile from "./pages/console/profile";
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route element={<StandardLayout />}>
+              
               <Route index element={<Home />} />
+              <Route path='*' element={<Error404 />} />
             </Route>
             <Route path="console" element={<ConsoleLayout />}>
               <Route index element={<Dashboard />} />
@@ -53,13 +57,17 @@ function App() {
               <Route path="create-page">
                 <Route index element={<Edit action="Create" type="Page" />} />
               </Route>
+
+
+              <Route path="profile">
+                <Route index element={<Profile />} />
+              </Route>
             </Route>
           </Route>
           <Route path="/signin-oidc" element={<Callback />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/logout/callback" element={<LogoutCallback />} />
           <Route path="/silentrenew" element={<SilentRenew />} />
-          <Route element={<Home />}></Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

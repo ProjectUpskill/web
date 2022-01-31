@@ -17,7 +17,7 @@ export default function ConsoleLayout() {
           <div className={styles.consoleNavbar}>
             <a href="#test">
               <div className={styles.navBarItem}>
-                <a href="#test">Dashboard</a>
+                <a href="/console">Dashboard</a>
               </div>
             </a>
             <div
