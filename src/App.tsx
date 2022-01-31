@@ -26,6 +26,7 @@ function App() {
             <Route path="console" element={<ConsoleLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="edit-article">
+              
                 <Route index element={<Edit action="Edit" type="Article" />} />
                 <Route path=":articleId">
                   <Route

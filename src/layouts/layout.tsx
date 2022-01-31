@@ -140,7 +140,7 @@ export default function Layout() {
               />
             </a>
             <br />
-            This work is licensed under a&nbsp;
+            Work licensed under a&nbsp;
             <a
               rel="license"
               href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
@@ -148,14 +148,8 @@ export default function Layout() {
               Creative Commons Attribution-NonCommercial-ShareAlike 4.0
               International License
             </a>
-          </Col>
-          <Col className="text-end">
-            <Row>
-              <Col className="text-end">
-                <img src={logo} alt="Project Upskill" height={60} width={160} />
-              </Col>
-            </Row>
-            <Row className="row-cols-auto justify-content-end">
+            <br /><br />
+            <Row className="row-cols-auto justify-content-start">
               <Col className="col-md-auto">
                 <Link to="/about">About</Link>
               </Col>
@@ -170,7 +164,20 @@ export default function Layout() {
               </Col>
             </Row>
           </Col>
-        </Row>
+          
+          <Col className="text-end">
+            <Row>
+              <Col className="text-end">
+                <img src={logo} alt="Project Upskill" height={60} width={160} />
+              </Col>
+              
+            </Row>
+            <Row><Col>Project Upskill is a charitable limited company by guarantee.
+             Registered at 23 Little Bolton Terrace, Salford, M5 5BD. UK Company Registration No. 13883006.</Col></Row>
+
+
+          </Col></Row>
+          <br />
       </footer>
     </Container>
   );
