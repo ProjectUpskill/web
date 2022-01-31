@@ -10,7 +10,7 @@ import { AuthContext } from "../providers/AuthProvider";
 
 export default function Home() {
   const articles = getArticles();
-  const reactContent = useArticle("homepage");
+  const {reactContent} = useArticle("homepage");
 
   const [user, setUser] = useState<User>();
 

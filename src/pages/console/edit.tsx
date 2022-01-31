@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import styles from "../../styles/ConsoleLayout.module.scss";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import { useArticleMarkdown } from "../../hooks/article";
+import useArticle from "../../hooks/article";
 import { useParams } from "react-router-dom";
-
 export interface Props {
   action: string;
   type: string;
@@ -15,42 +14,24 @@ export default function Edit({ action, type }: Props) {
   const articleName = articleId || "";
 
   function save() {
-    if (isArticle) {
-      setMarkdown(pendingMarkdown);
-    } else {
-      setMarkdownSidebar(pendingMarkdownSidebar);
-    }
+  
   }
+
   console.log(articleName);
 
   const [markdown, setMarkdown] = useState<string>();
   const [markdownSidebar, setMarkdownSidebar] = useState<string>();
-
   const [pendingMarkdown, setPendingMarkdown] = useState("");
   const [pendingMarkdownSidebar, setPendingMarkdownSidebar] = useState("");
-  const [isArticle, setIsArticle] = useState<boolean>(true);
 
-  const content = useArticleMarkdown(
-    articleName.split(" ").join("-").toLowerCase()
-  );
-  const contentSidebar = useArticleMarkdown(
-    articleName.split(" ").join("-").toLowerCase() + "-sidebar"
+  const [articleSelected, setArticleSelected] = useState<boolean>(true);
+
+  const {content, sidebar} = useArticle(
+    articleName.split(" ").join("-").toLowerCase(), false
   );
 
-  useEffect(() => {
-    if (content !== undefined) {
-      setMarkdown(content);
-    }
-  }, [content]);
+  useEffect(() => {    
 
-  useEffect(() => {
-    if (contentSidebar !== undefined) {
-      setMarkdownSidebar(contentSidebar);
-    }
-  }, [contentSidebar]);
-
-  useEffect(() => {
-    if (markdown !== undefined && markdownSidebar !== undefined) {
       const editorArticleInit = async () => {
         const { Editor } = await import("@toast-ui/editor");
         const el = document.querySelector("#editor");
@@ -62,7 +43,7 @@ export default function Edit({ action, type }: Props) {
                 setPendingMarkdown(editor.getMarkdown());
               },
             },
-            initialValue: markdown,
+            initialValue: content ? content : " ",
             minHeight: "500px",
             height: "500px",
 
@@ -83,7 +64,7 @@ export default function Edit({ action, type }: Props) {
                 setPendingMarkdownSidebar(editor.getMarkdown());
               },
             },
-            initialValue: markdownSidebar,
+            initialValue: sidebar ? sidebar : " ",
             minHeight: "500px",
             height: "500px",
             initialEditType: "wysiwyg",
@@ -91,8 +72,8 @@ export default function Edit({ action, type }: Props) {
         }
       };
       editorSidebarInit();
-    }
-  }, [markdown, markdownSidebar]);
+    
+  }, [content]);
 
   return (
     <div className={styles.dashboard}>
@@ -130,12 +111,12 @@ export default function Edit({ action, type }: Props) {
           <Col>
             <Button
               className={
-                isArticle
+                articleSelected
                   ? `${styles.buttonSpecial}`
                   : `${styles.inactiveButton}`
               }
               onClick={() => {
-                setIsArticle(true);
+                setArticleSelected(true);
               }}
             >
               Edit {type}
@@ -144,12 +125,12 @@ export default function Edit({ action, type }: Props) {
           <Col>
             <Button
               className={
-                !isArticle
+                !articleSelected
                   ? `${styles.buttonSpecial}`
                   : `${styles.inactiveButton}`
               }
               onClick={() => {
-                setIsArticle(false);
+                setArticleSelected(false);
               }}
             >
               Edit Sidebar
@@ -159,11 +140,11 @@ export default function Edit({ action, type }: Props) {
         <Row className={styles.tabs}>
           <Col>
             <div
-              className={!isArticle ? `${styles.hidden}` : `${styles.editor}`}
+              className={!articleSelected ? `${styles.hidden}` : `${styles.editor}`}
               id="editor"
             ></div>
             <div
-              className={isArticle ? `${styles.hidden}` : `${styles.editor}`}
+              className={articleSelected ? `${styles.hidden}` : `${styles.editor}`}
               id="editorSidebar"
             ></div>
           </Col>
@@ -176,8 +157,8 @@ export default function Edit({ action, type }: Props) {
           </Col>
           <Col>
             {" "}
-            <Button className={styles.button}>
-              <a className="item" href="">
+            <Button className={styles.button} onClick={() => window.location.reload() }>
+              <a className="item">
                 Revert
               </a>
             </Button>

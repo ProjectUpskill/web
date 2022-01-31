@@ -42,6 +42,7 @@ export default function useArticle(id: string, remark: boolean = true) {
     },
   };
 
+
   const [reactContent, setReactContent] = useRemark(remarkOptions);
 
   useEffect(() => {

@@ -10,15 +10,18 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ArticleSidebar from "../components/sidebar/articleSidebar";
 import { useParams } from "react-router";
+import StandardLayout from "../layouts/standardLayout";
+import Error404 from "./404";
 
 export default function Article() {
   const { articleId } = useParams<string>();
 
-  const { reactContent, reactSidebar } = useArticle(articleId!);
+  const { reactContent, reactSidebar, error } = useArticle(articleId!);
   const beginnerArticles = getArticles(5);
   const advancedArticles = getArticles(5);
 
   return (
+    (error) ? <><Error404/></> : 
     <>
       <Row>
         <Col lg={9} className={articleStyles.articleContent}>
