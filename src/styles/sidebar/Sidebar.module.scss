@@ -23,7 +23,7 @@
 }
 
 .sidebarBox {
-  background-color: #e9ecef;
+  background-color: hsl(210, 17%, 93%);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -54,6 +54,11 @@
 .titleStarred h3,
 .titleStarred p {
   margin-bottom: 0px !important;
+}
+
+.title {
+  padding-top: 20px;
+
 }
 
 .sidebarMarkdownContent section:not(:first-child) {
@@ -93,8 +98,8 @@
   background-color: #003d6e;
   color: #b4c8d9;
   padding: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 25px;
+  padding-bottom: 20px;
 }
 .titleStarred {
   background-color: #2791bb !important;

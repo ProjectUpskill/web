@@ -7,7 +7,6 @@ import Home from "./pages/index";
 import Article from "./pages/article";
 import Dashboard from "./pages/console/dashboard";
 import Edit from "./pages/console/edit";
-import Construction from "./pages";
 
 function App() {
   return (
@@ -24,16 +23,33 @@ function App() {
           </Route>
           <Route path="console" element={<ConsoleLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="edit">
-            <Route index element={<Edit />} />
+            <Route path="edit-article">
+            <Route index element={<Edit action="Edit" type="Article"/>} />
               <Route path=":articleId">
-                <Route index element={<Edit />} />
+                <Route index element={<Edit action="Edit" type="Article"/>} />
               
               </Route>
+              </Route>
+
+            <Route path="edit-page">
+            <Route index element={<Edit action="Edit" type="Page"/>} />
+              <Route path=":articleId">
+                <Route index element={<Edit action="Edit" type="Page"/>} />
               
+              </Route>
+              </Route>
+
+            <Route path="create-article">
+            <Route index element={<Edit action="Create" type="Article"/>} />
+             
+              </Route>
+              
+            <Route path="create-page">
+            <Route index element={<Edit action="Create" type="Page"/>} />
+              
+              </Route>
             </Route>
           </Route>
-        </Route>
         <Route element={<Home />}>
         </Route>
 

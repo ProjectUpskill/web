@@ -11,9 +11,6 @@ export default function ConstructionModal() {
   
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
-          Launch demo modal
-        </Button>
   
         <Modal show={show} onHide={handleClose} size="lg">
           <Modal.Header closeButton>

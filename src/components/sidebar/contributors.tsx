@@ -35,13 +35,12 @@ export default function Contributors({
           {contributors.map((a) => (
             <>
               <Row key={a.username}>
-                <Col sm={9}>
-                  <a href={a.url} className="d-flex">
+                <Col lg={9}>
+                  <a href={a.url}>
                     <img src={profile} width={32} height={32} /> &nbsp;
-                    {a.name} ({a.username})
+                    <span>{a.name} ({a.username}</span>)
                   </a>
                 </Col>
-                <Col sm={3}>{a.points} pts</Col>
               </Row>
               <hr />
             </>

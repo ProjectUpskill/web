@@ -18,11 +18,11 @@ export default function Preview({ article }: Props) {
   const comments = Math.floor(Math.random() * 10);
   const { title, likes } = article;
   return (
-    <Card className={styles.preview} border="light">
-      <Card.ImgOverlay className={styles.previewCardImgOverlay}>
+    <Card className={`${styles.preview} m-1`}>
+      <Card.ImgOverlay className={`${styles.previewCardImgOverlay}`}>
         <Card.Title>
           <Row className="mt-auto">
-            <Col xs="10">
+            <Col xs="9">
               <Link
                 className={styles.previewHeading}
                 to="/articles/how-to-cook-an-egg"
@@ -30,7 +30,7 @@ export default function Preview({ article }: Props) {
                 {title}
               </Link>
             </Col>
-            <Col xs="2" className="text-end">
+            <Col xs="3" className="text-end">
               <FontAwesomeIcon inverse={false} icon={faStar} />
             </Col>
           </Row>
@@ -45,8 +45,8 @@ export default function Preview({ article }: Props) {
         </Row>
       </Card.ImgOverlay>
       <Card.Img
-        width={200}
-        height={200}
+        width={"100%"}
+        height={"100%"}
         src={`https://picsum.photos/id/${pic}/200`}
       />
     </Card>

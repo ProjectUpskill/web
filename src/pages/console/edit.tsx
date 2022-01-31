@@ -1,11 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import styles from "../../styles/ConsoleLayout.module.scss";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { useArticleMarkdown } from "../../hooks/article";
 import { useParams } from "react-router-dom";
 
-export default function Edit() {
+export interface Props {
+  action: string;
+  type: string;
+}
+
+export default function Edit({action, type} : Props) {
   const { articleId } = useParams();
   const articleName = articleId || "";
 
@@ -33,14 +38,14 @@ export default function Edit() {
   );
 
   useEffect(() => {
-    if (content != undefined)
+    if (content !== undefined)
     {
     setMarkdown(content);
     }
   }, [content]);
 
   useEffect(() => {
-    if (contentSidebar != undefined)
+    if (contentSidebar !== undefined)
     {
 
     setMarkdownSidebar(contentSidebar);
@@ -48,8 +53,8 @@ export default function Edit() {
   }, [contentSidebar]);
 
   useEffect(() => {
-    if (      markdown != undefined &&
-      markdownSidebar != undefined) {
+    if (      markdown !== undefined &&
+      markdownSidebar !== undefined) {
       const editorArticleInit = async () => {
         const { Editor } = await import("@toast-ui/editor");
         const el = document.querySelector("#editor");
@@ -62,8 +67,8 @@ export default function Edit() {
               },
             },
             initialValue: markdown,
-            minHeight: "1000px",
-            height: "1000px",
+            minHeight: "500px",
+            height: "500px",
 
             initialEditType: "wysiwyg",
           });
@@ -83,8 +88,8 @@ export default function Edit() {
               },
             },
             initialValue: markdownSidebar,
-            minHeight: "1000px",
-            height: "1000px",
+            minHeight: "500px",
+            height: "500px",
             initialEditType: "wysiwyg",
           });
         }
@@ -96,15 +101,16 @@ export default function Edit() {
   return (
     <div className={styles.dashboard}>
       <div className={styles.dashboardTitle}>
-        <h1>Edit an Article</h1>
+        <h1>{action} {type}</h1>
       </div>
       <div className={styles.content}>
         <Form>
           <Form.Group className="mb-3" controlId="formArticleName">
             <Form.Control
               type="email"
-              placeholder="Enter Article Name..."
-              value={articleName}
+              placeholder={`Enter ${type} Name...`}
+              defaultValue={articleName}
+              onChange={() => {return false;}}
             />
             <Form.Text className="text-muted">Article Name</Form.Text>
             <br />
@@ -112,6 +118,7 @@ export default function Edit() {
             <Form.Control
               type="email"
               placeholder="Enter Tags, comma seperated..."
+              onChange={() => {return false;}}
             />
             <Form.Text className="text-muted">Tags (comma seperated)</Form.Text>
           </Form.Group>
@@ -129,7 +136,7 @@ export default function Edit() {
                 setIsArticle(true);
               }}
             >
-              Edit Article
+              Edit {type}
             </Button>
           </Col>
           <Col>

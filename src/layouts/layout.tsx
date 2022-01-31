@@ -1,4 +1,6 @@
 import React from "react";
+import styles from "../styles/Layout.module.scss";
+
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -18,7 +20,6 @@ import {
   faMoneyBill,
 } from "@fortawesome/free-solid-svg-icons";
 
-import styles from "../styles/Layout.module.scss";
 
 import useAuth from "../hooks/auth";
 
@@ -30,51 +31,55 @@ export default function Layout() {
 
   return (
     <Container>
-      <Navbar className={`${styles.navbar} box-shadow`} variant="dark">
+      <Navbar collapseOnSelect expand="lg" className={`${styles.navbar} box-shadow`} variant="dark">
         <Container>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
           <Navbar.Brand as={Link} to="/">
-            <img src={logo} alt="Project Upskill" height={60} width={160} />
+            <img src={logo} className={styles.logo} alt="Project Upskill" height={60} width={120} />
           </Navbar.Brand>
-          <Nav className="me-auto w-50">
-            <NavDropdown
-              title={
-                <span>
-                  <FontAwesomeIcon icon={faCaretSquareDown} /> Topics
-                </span>
-              }
-            >
-              <NavDropdown.Item href="#action3">Profile</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown
-              title={
-                <span>
-                  <FontAwesomeIcon icon={faHome} /> My Learning
-                </span>
-              }
-            >
-              <NavDropdown.Item href="#action3">Profile</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Nav className={styles.navbarNav}>
-            <Nav.Link as={Link} to="/donate">
-              <FontAwesomeIcon icon={faMoneyBill} /> Donate
-            </Nav.Link>
-            <Nav.Link as={Link} to="/console">
-              <FontAwesomeIcon icon={faWarehouse} /> Console
-            </Nav.Link>
-            <Nav.Link as={Link} to="/articles/new">
-              <FontAwesomeIcon icon={faPlusSquare} /> Create{" "}
-            </Nav.Link>
-            <Nav.Link href="https://discourse.projectupskill.org/">
-              <FontAwesomeIcon icon={faComments} /> Chat
-            </Nav.Link>
-          </Nav>
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto w-50">
+              <NavDropdown
+                title={
+                  <span>
+                    <FontAwesomeIcon icon={faCaretSquareDown} /> Topics
+                  </span>
+                }
+              >
+                <NavDropdown.Item href="#action3">Profile</NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown
+                title={
+                  <span>
+                    <FontAwesomeIcon icon={faHome} /> My Learning
+                  </span>
+                }
+              >
+                <NavDropdown.Item href="#action3">Profile</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav className={styles.navbarNav}>
+              <Nav.Link as={Link} to="/donate">
+                <FontAwesomeIcon icon={faMoneyBill} /> Donate
+              </Nav.Link>
+              <Nav.Link as={Link} to="/console">
+                <FontAwesomeIcon icon={faWarehouse} /> Console
+              </Nav.Link>
+              <Nav.Link as={Link} to="/articles/new">
+                <FontAwesomeIcon icon={faPlusSquare} /> Create{" "}
+              </Nav.Link>
+              <Nav.Link href="https://discourse.projectupskill.org/">
+                <FontAwesomeIcon icon={faComments} /> Chat
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
           <Nav>
             <NavDropdown
               className={styles.profileDropdown}
               title={
                 <span style={{ position: "relative" }}>
-                  <img src={profile} width={32} height={32} />
+                  <img src={profile} width={32} height={32} alt="Profile" />
                   <Badge className={styles.notification}>9</Badge>
                 </span>
               }
