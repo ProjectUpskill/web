@@ -9,10 +9,13 @@ import useArticle from "../hooks/article";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ArticleSidebar from "../components/sidebar/articleSidebar";
+import { useParams } from 'react-router';
 
 export default function Article() {
-  const reactContent = useArticle("cook-an-egg");
-  const reactRequirements = useArticle("cook-an-egg-sidebar");
+  const { articleId } = useParams<string>();
+  
+  const reactContent = useArticle(articleId!);  
+  const reactRequirements = useArticle(articleId + "-sidebar");
   const beginnerArticles = getArticles(5);
   const advancedArticles = getArticles(5);
 

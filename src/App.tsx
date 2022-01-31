@@ -27,7 +27,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path='*' element={<Error404 />} />
             </Route>
-            <Route  path="/article/:articleId"  element={<Article />}>
+            <Route  path="/article/:articleId" element={<Article />}>
               </Route>
 
             <Route path="console" element={<ConsoleLayout />}>
