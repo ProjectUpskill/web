@@ -30,7 +30,7 @@ export default function Social({ star }: Props) {
             star ? `${styles.title} ${styles.titleStarred}` : `${styles.title}`
           }
         >
-          <h5>Share this Article</h5>
+          <h2>Share this Article</h2>
         </div>
 
         <Row className={styles.social} id="hello">

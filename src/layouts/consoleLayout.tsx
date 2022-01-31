@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -6,15 +8,16 @@ import styles from "../styles/ConsoleLayout.module.scss";
 
 import { Outlet } from "react-router-dom";
 
+
 export default function ConsoleLayout() {
   return (
     <Container>
-      <Row>
-        <Col lg={3} className={styles.container}>
+      <Row >
+        <Col md={3} className="p-0 m-0">
           <div className={styles.consoleNavbar}>
-            <a href="">
+            <a href="#test">
               <div className={styles.navBarItem}>
-                <a href="#">Dashboard</a>
+                <a href="#test">Dashboard</a>
               </div>
             </a>
             <div
@@ -23,16 +26,16 @@ export default function ConsoleLayout() {
             >
               My Profile
               <div className={styles.navBarItem}>
-                <a href="#">View/Edit Profile</a>
+                <a href="#test">View/Edit Profile</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Set Up 2FA</a>
+                <a href="#test">Set Up 2FA</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Change Password</a>
+                <a href="#test">Change Password</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Privacy Settings</a>
+                <a href="#test">Privacy Settings</a>
               </div>
             </div>
             <div
@@ -41,19 +44,19 @@ export default function ConsoleLayout() {
             >
               My Articles &amp; Suggestions
               <div className={styles.navBarItem}>
-                <a href="#">Create an Article</a>
+                <a href="/console/create-article">Create an Article</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Adopt an Article</a>
+                <a href="#test">Adopt an Article</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Published Articles</a>
+                <a href="#test">Published Articles</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Waiting for Approval</a>
+                <a href="#test">Waiting for Approval</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Suggestions</a>
+                <a href="#test">Suggestions</a>
               </div>
             </div>
             <div
@@ -62,19 +65,19 @@ export default function ConsoleLayout() {
             >
               My Pages
               <div className={styles.navBarItem}>
-                <a href="#">Create a Page</a>
+                <a href="/console/create-page">Create a Page</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Adopt a Page</a>
+                <a href="#test">Adopt a Page</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Published Pages</a>
+                <a href="#test">Published Pages</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Waiting for Approval</a>
+                <a href="#test">Waiting for Approval</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Suggestions</a>
+                <a href="#test">Suggestions</a>
               </div>
             </div>
             <div
@@ -83,25 +86,25 @@ export default function ConsoleLayout() {
             >
               Editors Desk
               <div className={styles.navBarItem}>
-                <a href="#">Article Search</a>
+                <a href="#test">Article Search</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Page Search</a>
+                <a href="#test">Page Search</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Review Articles</a>
+                <a href="#test">Review Articles</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Review Pages</a>
+                <a href="#test">Review Pages</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Inbox</a>
+                <a href="#test">Inbox</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">User Reports</a>
+                <a href="#test">User Reports</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Promote/Demote User</a>
+                <a href="#test">Promote/Demote User</a>
               </div>
             </div>
 
@@ -111,25 +114,25 @@ export default function ConsoleLayout() {
             >
               Moderators Desk
               <div className={styles.navBarItem}>
-                <a href="#">Discourse Moderation</a>
+                <a href="#test">Discourse Moderation</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Post an Announcement</a>
+                <a href="#test">Post an Announcement</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Turn off Registrations</a>
+                <a href="#test">Turn off Registrations</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">User Search</a>
+                <a href="#test">User Search</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Create a New User</a>
+                <a href="#test">Create a New User</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">User Reports</a>
+                <a href="#test">User Reports</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Assign Permissions</a>
+                <a href="#test">Assign Permissions</a>
               </div>
             </div>
 
@@ -139,10 +142,10 @@ export default function ConsoleLayout() {
             >
               Permission Groups
               <div className={styles.navBarItem}>
-                <a href="#">Group Search</a>
+                <a href="#test">Group Search</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Create a New Group</a>
+                <a href="#test">Create a New Group</a>
               </div>
             </div>
 
@@ -152,16 +155,16 @@ export default function ConsoleLayout() {
             >
               Analytics
               <div className={styles.navBarItem}>
-                <a href="#">View Public Metrics</a>
+                <a href="#test">View Public Metrics</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">View Personal Metrics</a>
+                <a href="#test">View Personal Metrics</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Create Metrics</a>
+                <a href="#test">Create Metrics</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">System Information</a>
+                <a href="#test">System Information</a>
               </div>
             </div>
             <div
@@ -170,10 +173,10 @@ export default function ConsoleLayout() {
             >
               Compliance
               <div className={styles.navBarItem}>
-                <a href="#">GDPR</a>
+                <a href="#test">GDPR</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Report to Legal</a>
+                <a href="#test">Report to Legal</a>
               </div>
             </div>
             <div
@@ -182,40 +185,27 @@ export default function ConsoleLayout() {
             >
               Report
               <div className={styles.navBarItem}>
-                <a href="#">Report User</a>
+                <a href="#test">Report User</a>
               </div>
               <div className={styles.navBarItem}>
-                <a href="#">Report Content</a>
+                <a href="#test">Report Content</a>
               </div>
             </div>
-            <a href="#">
+            <a href="#test">
               <div className={styles.navBarItem}>
-                <a href="#">Help</a>
+                <a href="#test">Help</a>
               </div>
             </a>
 
-            <a href="#">
-              <div className={styles.navBarItem}>
-                <a href="#">Logout</a>
-              </div>
-            </a>
 
-            <a href="#">
-              <div
-                className={`${styles.workspacesButton} ${styles.navBarItem}`}
-              >
-                <a href="#">Google Workspaces</a>
-              </div>
-            </a>
-
-            <a href="#">
+            <a href="#test">
               <div className={`${styles.adminButton} ${styles.navBarItem}`}>
-                <a href="#">Administrator</a>
+                <a href="#test">Administrator</a>
               </div>
             </a>
           </div>
         </Col>
-        <Col lg={9} className={styles.consoleContent}>
+        <Col md={9} className={`${styles.container}`}>
           <Outlet />
         </Col>
       </Row>
@@ -224,10 +214,10 @@ export default function ConsoleLayout() {
 }
 function expandNavElements(element: any) {
   try {
-    if (element.children.length == 1) {
+    if (element.children.length === 1) {
       return false;
     }
-    if (element.children[1].style.display == "block") {
+    if (element.children[1].style.display === "block") {
       for (let i = 0; i < element.children.length; i++) {
         element.children[i].style.display = "none";
       }

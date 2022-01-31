@@ -23,21 +23,32 @@ function App() {
             <Route element={<StandardLayout />}>
               <Route index element={<Home />} />
             </Route>
-            <Route path="articles">
+          </Route>
+          <Route path="console" element={<ConsoleLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="edit-article">
+              <Route index element={<Edit action="Edit" type="Article" />} />
               <Route path=":articleId">
-                <Route index element={<Article />} />
+                <Route index element={<Edit action="Edit" type="Article" />} />
               </Route>
             </Route>
-            <Route path="console" element={<ConsoleLayout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="edit">
-                <Route index element={<Edit />} />
-                <Route path=":articleId">
-                  <Route index element={<Edit />} />
-                </Route>
+
+            <Route path="edit-page">
+              <Route index element={<Edit action="Edit" type="Page" />} />
+              <Route path=":articleId">
+                <Route index element={<Edit action="Edit" type="Page" />} />
               </Route>
+            </Route>
+
+            <Route path="create-article">
+              <Route index element={<Edit action="Create" type="Article" />} />
+            </Route>
+
+            <Route path="create-page">
+              <Route index element={<Edit action="Create" type="Page" />} />
             </Route>
           </Route>
+          <Route element={<Home />}></Route>
           <Route path="/signin-oidc" element={<Callback />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/logout/callback" element={<LogoutCallback />} />

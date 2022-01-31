@@ -46,7 +46,7 @@ export function useArticleMarkdown(id: string) {
   
   const fetcher = (url: string) => fetch(url).then((res) => res.text());
   const { data, error } = useSWR(`/articles/${id}.md`, fetcher);
-  if (id == "" || error) {
+  if (id === "" || id === "-sidebar" || error) {
     return "";
   }
   
