@@ -9,13 +9,12 @@ import useArticle from "../hooks/article";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ArticleSidebar from "../components/sidebar/articleSidebar";
-import { useParams } from 'react-router';
+import { useParams } from "react-router";
 
 export default function Article() {
   const { articleId } = useParams<string>();
-  
-  const reactContent = useArticle(articleId!);  
-  const reactRequirements = useArticle(articleId + "-sidebar");
+
+  const { reactContent, reactSidebar } = useArticle(articleId!);
   const beginnerArticles = getArticles(5);
   const advancedArticles = getArticles(5);
 
@@ -30,7 +29,7 @@ export default function Article() {
           <ArticleSidebar
             requirements={
               <div className={sidebarStyles.sidebarMarkdownContent}>
-                {reactRequirements}
+                {reactSidebar}
               </div>
             }
             beginnerArticles={beginnerArticles}

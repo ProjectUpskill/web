@@ -1,24 +1,32 @@
 import { ImageProps } from "react-bootstrap";
-import { useRemarkSync } from "react-remark";
+import { useRemark, UseRemarkOptions, useRemarkSync } from "react-remark";
 import useSWR from "swr";
 import sectionize from "../lib/sectionize";
+import { Article } from "@projectupskill/common/models/Article";
+import { useEffect, useMemo } from "react";
 
 type h1Props = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLHeadingElement>,
   HTMLHeadingElement
 >;
 
-export default function useArticle(id: string) {
+export default function useArticle(id: string, remark: boolean = true) {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data, error } = useSWR(`https://api.projectupskill.org/article/${id}`, fetcher);
+  const { data, error } = useSWR<Article>(
+    `https://api.projectupskill.org/article/${id}`,
+    fetcher
+  );
 
-  const text = error
-    ? "Article failed to load."
-    : data
-    ? data["versions"][0]["content"]
-    : "Loading article...";
+  const currentVersion = useMemo(() => {
+    const versions = data?.versions || [];
+    if (versions.length > 0) return versions[0];
+    return undefined;
+  }, [data]);
 
-  const reactContent = useRemarkSync(text, {
+  const content = useMemo(() => currentVersion?.content, [currentVersion]);
+  const sidebar = useMemo(() => currentVersion?.sidebar, [currentVersion]);
+
+  const remarkOptions: UseRemarkOptions = {
     remarkPlugins: [sectionize],
     rehypeReactOptions: {
       components: {
@@ -28,27 +36,30 @@ export default function useArticle(id: string) {
           </h1>
         ),
         img: (props: ImageProps) => (
-          <img
-            {...props}
-            width={"100%"}
-            height={300}
-            object-fit="cover"
-          />
+          <img {...props} width={"100%"} height={300} object-fit="cover" />
         ),
       },
     },
-  });
+  };
 
-  return reactContent;
-}
+  const [reactContent, setReactContent] = useRemark(remarkOptions);
 
-export function useArticleMarkdown(id: string) {
-  
-  const fetcher = (url: string) => fetch(url).then((res) => res.text());
-  const { data, error } = useSWR(`http://api.projectupskill.org/article/${id}`, fetcher);
-  if (id === "" || id === "-sidebar" || error) {
-    return "";
-  }
-  
-  return data;
+  useEffect(() => {
+    if (content && remark) setReactContent(content);
+  }, [content]);
+
+  const [reactSidebar, setReactSidebar] = useRemark(remarkOptions);
+
+  useEffect(() => {
+    if (sidebar && remark) setReactSidebar(sidebar);
+  }, [sidebar]);
+
+  return {
+    article: data,
+    error,
+    content,
+    sidebar,
+    reactContent,
+    reactSidebar,
+  };
 }

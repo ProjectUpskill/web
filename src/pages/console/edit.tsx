@@ -10,7 +10,7 @@ export interface Props {
   type: string;
 }
 
-export default function Edit({action, type} : Props) {
+export default function Edit({ action, type }: Props) {
   const { articleId } = useParams();
   const articleName = articleId || "";
 
@@ -38,23 +38,19 @@ export default function Edit({action, type} : Props) {
   );
 
   useEffect(() => {
-    if (content !== undefined)
-    {
-    setMarkdown(content);
+    if (content !== undefined) {
+      setMarkdown(content);
     }
   }, [content]);
 
   useEffect(() => {
-    if (contentSidebar !== undefined)
-    {
-
-    setMarkdownSidebar(contentSidebar);
+    if (contentSidebar !== undefined) {
+      setMarkdownSidebar(contentSidebar);
     }
   }, [contentSidebar]);
 
   useEffect(() => {
-    if (      markdown !== undefined &&
-      markdownSidebar !== undefined) {
+    if (markdown !== undefined && markdownSidebar !== undefined) {
       const editorArticleInit = async () => {
         const { Editor } = await import("@toast-ui/editor");
         const el = document.querySelector("#editor");
@@ -101,7 +97,9 @@ export default function Edit({action, type} : Props) {
   return (
     <div className={styles.dashboard}>
       <div className={styles.dashboardTitle}>
-        <h1>{action} {type}</h1>
+        <h1>
+          {action} {type}
+        </h1>
       </div>
       <div className={styles.content}>
         <Form>
@@ -110,7 +108,9 @@ export default function Edit({action, type} : Props) {
               type="email"
               placeholder={`Enter ${type} Name...`}
               defaultValue={articleName}
-              onChange={() => {return false;}}
+              onChange={() => {
+                return false;
+              }}
             />
             <Form.Text className="text-muted">Article Name</Form.Text>
             <br />
@@ -118,7 +118,9 @@ export default function Edit({action, type} : Props) {
             <Form.Control
               type="email"
               placeholder="Enter Tags, comma seperated..."
-              onChange={() => {return false;}}
+              onChange={() => {
+                return false;
+              }}
             />
             <Form.Text className="text-muted">Tags (comma seperated)</Form.Text>
           </Form.Group>
