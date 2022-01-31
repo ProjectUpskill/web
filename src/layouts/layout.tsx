@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -20,13 +20,19 @@ import {
 
 import styles from "../styles/Layout.module.scss";
 
-import useAuth from "../hooks/auth";
-
 import logo from "../assets/logo.svg";
 import profile from "../assets/profile.png";
+import { AuthContext } from "../providers/AuthProvider";
+import { User } from "oidc-client";
 
 export default function Layout() {
-  const { user, signIn, signOut } = useAuth();
+  const [user, setUser] = useState<User>();
+
+  const authService = useContext(AuthContext);
+
+  useEffect(() => {
+    authService.getUser().then((user) => setUser(user));
+  }, []);
 
   return (
     <Container>
@@ -82,16 +88,17 @@ export default function Layout() {
             >
               {user ? (
                 <>
-                  <NavDropdown.Item>{user.getUsername()}</NavDropdown.Item>
+                  <NavDropdown.Item>{user.profile.username}</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action3">Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="#" onClick={() => signOut()}>
-                    Logout
-                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#">Logout</NavDropdown.Item>
                 </>
               ) : (
                 <>
-                  <NavDropdown.Item href="#" onClick={() => signIn()}>
+                  <NavDropdown.Item
+                    href="#"
+                    onClick={() => authService.signinRedirect()}
+                  >
                     Login
                   </NavDropdown.Item>
                 </>
