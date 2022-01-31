@@ -19,8 +19,6 @@ export default function Home() {
   useEffect(() => {
     authService.getUser().then((user) => setUser(user));
   }, []);
-
-  const idToken = useMemo(() => user?.id_token, [user])
   
   return (
     <>
@@ -29,7 +27,7 @@ export default function Home() {
       <SearchBar />
       </div>
       <PreviewGrid articles={articles} />
-      if (!user) <ConstructionModal />
+      {!user ? <ConstructionModal /> :  <></>}
     </>
   );
 }
