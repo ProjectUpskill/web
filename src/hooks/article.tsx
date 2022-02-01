@@ -2,7 +2,7 @@ import { ImageProps } from "react-bootstrap";
 import { useRemark, UseRemarkOptions, useRemarkSync } from "react-remark";
 import useSWR from "swr";
 import sectionize from "../lib/sectionize";
-import { Article } from "@projectupskill/common/models/Article";
+import { Article, ArticleType } from "@projectupskill/common/models";
 import { useEffect, useMemo } from "react";
 
 type h1Props = React.DetailedHTMLProps<
@@ -25,6 +25,10 @@ export default function useArticle(id: string, remark: boolean = true) {
 
   const content = useMemo(() => currentVersion?.content, [currentVersion]);
   const sidebar = useMemo(() => currentVersion?.sidebar, [currentVersion]);
+  const type = useMemo(
+    () => data?.type || ArticleType.Article,
+    [currentVersion]
+  );
 
   const remarkOptions: UseRemarkOptions = {
     remarkPlugins: [sectionize],
@@ -32,7 +36,8 @@ export default function useArticle(id: string, remark: boolean = true) {
       components: {
         h1: (props: h1Props) => (
           <h1 {...props}>
-            {Object.values(props)} <a href={`/console/edit/${id}`}>✏️</a>
+            {Object.values(props)}{" "}
+            <a href={`/console/edit-${type}/${id}`}>✏️</a>
           </h1>
         ),
         img: (props: ImageProps) => (

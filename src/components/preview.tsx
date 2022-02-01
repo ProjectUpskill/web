@@ -25,7 +25,7 @@ export default function Preview({ article }: Props) {
             <Col xs="9">
               <Link
                 className={styles.previewHeading}
-                to="/articles/how-to-cook-an-egg"
+                to="/article/how-to-cook-an-egg"
               >
                 {title}
               </Link>
