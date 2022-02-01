@@ -1367,10 +1367,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
   integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
 
-"@projectupskill/common@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@projectupskill/common/-/common-1.0.2.tgz#fcdf46e8d96ae5efaf02f0c77c302c25c66adddd"
-  integrity sha512-eRLn+SPViJZZh8S8ckp7TvXhWnToimOXCoPsx3QjWNqjRjxqhZRpJl07bVzPNp7Zo8n+czePhCIWLCk79uiCTw==
+"@projectupskill/common@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@projectupskill/common/-/common-1.0.5.tgz#f98b247683baae4087983308baef36284cedc664"
+  integrity sha512-8e6b8vK/XU0T1waU+YHPR3uURFrpnXBX56i/wp7VuKwjYrnd6iaGTWb2V0YwNOLzAvSpD47r2j8sVKllJD6Ryg==
 
 "@react-aria/ssr@^3.0.1":
   version "3.1.0"
