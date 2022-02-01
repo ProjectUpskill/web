@@ -10,8 +10,8 @@ export default function Profile() {
         <h1>Profile</h1>
       </div>
       <div className={styles.content}>
-      <p>Profile test</p>
+        <p>Profile test</p>
       </div>
-      </div>
+    </div>
   );
 }

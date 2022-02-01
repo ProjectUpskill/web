@@ -26,28 +26,52 @@ a {
   text-decoration: none !important;
 }
 
-h1{ font-size: 2em}
-h2{ font-size:1.3em}
-h3{ font-size:1.17em}
-h4{ font-size:1em}
-h5{ font-size:0.83em}
-h6{ font-size:0.75em}
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.3em;
+}
+h3 {
+  font-size: 1.17em;
+}
+h4 {
+  font-size: 1em;
+}
+h5 {
+  font-size: 0.83em;
+}
+h6 {
+  font-size: 0.75em;
+}
 
-@media only screen  and (max-width: 600px)
-{
-
-h1{ font-size: 1.6em}
-h2{ font-size:1.1em}
-h3{ font-size:1.1em}
-h4{ font-size:0.95em}
-h5{ font-size:0.80em}
-h6{ font-size:0.70em}
-p { font-size: 0.9em;}
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.6em;
+  }
+  h2 {
+    font-size: 1.1em;
+  }
+  h3 {
+    font-size: 1.1em;
+  }
+  h4 {
+    font-size: 0.95em;
+  }
+  h5 {
+    font-size: 0.8em;
+  }
+  h6 {
+    font-size: 0.7em;
+  }
+  p {
+    font-size: 0.9em;
+  }
 }
 
 .box-shadow {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-} 
+}
 
 .nav-link {
   color: rgb(194, 199, 226) !important;

@@ -13,18 +13,25 @@ interface Props {
 
 export default function Sidebar({ topArticles, topContributors }: Props) {
   return (
-      <><Articles
-      articles={topArticles}
-      name={"🚀 Top Articles"}
-      desc={"Our top curated articles"}
-      star={false} /><Articles
+    <>
+      <Articles
+        articles={topArticles}
+        name={"🚀 Top Articles"}
+        desc={"Our top curated articles"}
+        star={false}
+      />
+      <Articles
         articles={topArticles}
         name={"✏️ Adopt an Article"}
         desc={"Help us write new articles!"}
-        star={false} /><Contributors
+        star={false}
+      />
+      <Contributors
         contributors={topContributors}
         name={"👥 Top Contributors"}
         desc={"Our most active contributors"}
-        star={false} /></>
+        star={false}
+      />
+    </>
   );
 }

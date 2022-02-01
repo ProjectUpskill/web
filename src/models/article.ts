@@ -1,5 +1,5 @@
 export interface Article {
-  title: string,
-  likes: number[],
-  url: string
+  title: string;
+  likes: number[];
+  url: string;
 }

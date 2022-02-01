@@ -22,19 +22,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-          <Route path='*' element={<Error404 />} />
+            <Route path="*" element={<Error404 />} />
 
             <Route element={<StandardLayout />}>
-              
               <Route index element={<Home />} />
             </Route>
-            <Route  path="/article/:articleId" element={<Article />}>
-              </Route>
+            <Route path="/article/:articleId" element={<Article />}></Route>
 
             <Route path="console" element={<ConsoleLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="edit-article">
-              
                 <Route index element={<Edit action="Edit" type="Article" />} />
                 <Route path=":articleId">
                   <Route
@@ -61,7 +58,6 @@ function App() {
               <Route path="create-page">
                 <Route index element={<Edit action="Create" type="Page" />} />
               </Route>
-
 
               <Route path="profile">
                 <Route index element={<Profile />} />

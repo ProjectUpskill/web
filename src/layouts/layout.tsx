@@ -35,7 +35,7 @@ export default function Layout() {
     authService.getUser().then((user) => setUser(user));
   }, []);
 
-  const idToken = useMemo(() => user?.id_token, [user])
+  const idToken = useMemo(() => user?.id_token, [user]);
 
   return (
     <Container>
@@ -83,15 +83,19 @@ export default function Layout() {
                 <FontAwesomeIcon icon={faMoneyBill} /> Donate
               </Nav.Link>
 
-              {user ? 
-                (<><Nav.Link as={Link} to="/console">
-                  <FontAwesomeIcon icon={faWarehouse} /> Console
-                </Nav.Link>
+              {user ? (
+                <>
+                  <Nav.Link as={Link} to="/console">
+                    <FontAwesomeIcon icon={faWarehouse} /> Console
+                  </Nav.Link>
 
-              <Nav.Link as={Link} to="/console/create-article">
-                <FontAwesomeIcon icon={faPlusSquare} /> Create{" "}
-              </Nav.Link></>)  : ""
-}
+                  <Nav.Link as={Link} to="/console/create-article">
+                    <FontAwesomeIcon icon={faPlusSquare} /> Create{" "}
+                  </Nav.Link>
+                </>
+              ) : (
+                ""
+              )}
               <Nav.Link href="https://discourse.projectupskill.org/">
                 <FontAwesomeIcon icon={faComments} /> Chat
               </Nav.Link>
@@ -102,11 +106,16 @@ export default function Layout() {
               className={styles.profileDropdown}
               title={
                 <span style={{ position: "relative" }}>
-                  {user ? 
-
-                  (<><img src={profile} width={32} height={32} alt="Profile" />
-                  <Badge className={styles.notification}>9</Badge></>): <><FontAwesomeIcon icon={faUser} /> <span>Account</span></>}
-                  
+                  {user ? (
+                    <>
+                      <img src={profile} width={32} height={32} alt="Profile" />
+                      <Badge className={styles.notification}>9</Badge>
+                    </>
+                  ) : (
+                    <>
+                      <FontAwesomeIcon icon={faUser} /> <span>Account</span>
+                    </>
+                  )}
                 </span>
               }
               id="profileDropdown"
@@ -158,7 +167,8 @@ export default function Layout() {
               Creative Commons Attribution-NonCommercial-ShareAlike 4.0
               International License
             </a>
-            <br /><br />
+            <br />
+            <br />
             <Row className="row-cols-auto justify-content-start">
               <Col className="col-md-auto">
                 <Link to="/about">About</Link>
@@ -174,20 +184,23 @@ export default function Layout() {
               </Col>
             </Row>
           </Col>
-          
+
           <Col className="text-end">
             <Row>
               <Col className="text-end">
                 <img src={logo} alt="Project Upskill" height={60} width={160} />
               </Col>
-              
             </Row>
-            <Row><Col>Project Upskill is a charitable limited company by guarantee.
-             Registered at 23 Little Bolton Terrace, Salford, M5 5BD. UK Company Registration No. 13883006.</Col></Row>
-
-
-          </Col></Row>
-          <br />
+            <Row>
+              <Col>
+                Project Upskill is a charitable limited company by guarantee.
+                Registered at 23 Little Bolton Terrace, Salford, M5 5BD. UK
+                Company Registration No. 13883006.
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <br />
       </footer>
     </Container>
   );

@@ -20,8 +20,11 @@ export default function Article() {
   const beginnerArticles = getArticles(5);
   const advancedArticles = getArticles(5);
 
-  return (
-    (error) ? <><Error404/></> : 
+  return error ? (
+    <>
+      <Error404 />
+    </>
+  ) : (
     <>
       <Row>
         <Col lg={9} className={articleStyles.articleContent}>

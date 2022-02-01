@@ -26,7 +26,6 @@ export default function ArticleSidebar({
         beginnerArticles={beginnerArticles}
         advancedArticles={advancedArticles}
       />
-       
     </>
   );
 }

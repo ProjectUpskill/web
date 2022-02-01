@@ -38,7 +38,10 @@ export default function Contributors({
                 <Col lg={9}>
                   <a href={a.url}>
                     <img src={profile} width={32} height={32} /> &nbsp;
-                    <span>{a.name} ({a.username}</span>)
+                    <span>
+                      {a.name} ({a.username}
+                    </span>
+                    )
                   </a>
                 </Col>
               </Row>

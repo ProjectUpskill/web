@@ -4,13 +4,13 @@ import styles from "../styles/Home.module.scss";
 import getArticles from "../mocks/articles";
 import useArticle from "../hooks/article";
 import ConstructionModal from "../components/construction-modal";
-import SearchBar from "../components/search"
+import SearchBar from "../components/search";
 import { User } from "oidc-client";
 import { AuthContext } from "../providers/AuthProvider";
 
 export default function Home() {
   const articles = getArticles();
-  const {reactContent} = useArticle("homepage");
+  const { reactContent } = useArticle("homepage");
 
   const [user, setUser] = useState<User>();
 
@@ -19,15 +19,15 @@ export default function Home() {
   useEffect(() => {
     authService.getUser().then((user) => setUser(user));
   }, []);
-  
+
   return (
     <>
       <div className={styles.content}>
         {reactContent}
-      <SearchBar />
+        <SearchBar />
       </div>
       <PreviewGrid articles={articles} />
-      {!user ? <ConstructionModal /> :  <></>}
+      {!user ? <ConstructionModal /> : <></>}
     </>
   );
 }

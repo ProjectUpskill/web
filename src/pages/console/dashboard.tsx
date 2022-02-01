@@ -27,37 +27,46 @@ export default function Dashboard() {
         <h1>Common Actions</h1>
       </div>
       <div className={styles.content}>
-        <Row className={styles.commonActions} >
+        <Row className={styles.commonActions}>
           <Col>
-            <Link to="/console/create-article" className={`btn ${styles.button}`}>
-              ✏️ <br />Create Article
+            <Link
+              to="/console/create-article"
+              className={`btn ${styles.button}`}
+            >
+              ✏️ <br />
+              Create Article
             </Link>
           </Col>
           <Col>
             <Link to="/console/edit" className={`btn ${styles.button}`}>
-              📝 <br />Find Article
+              📝 <br />
+              Find Article
             </Link>
           </Col>
           <Col>
             <Link to="/console/create" className={`btn ${styles.button}`}>
-              👤 <br />Change Password
+              👤 <br />
+              Change Password
             </Link>
           </Col>
         </Row>
         <Row className={styles.commonActions}>
           <Col>
             <Link to="/console/create" className={`btn ${styles.button}`}>
-              🖥️ <br />Editors Queue
+              🖥️ <br />
+              Editors Queue
             </Link>
           </Col>
           <Col>
             <Link to="/console/create" className={`btn ${styles.button}`}>
-              ❗ <br />Report User
+              ❗ <br />
+              Report User
             </Link>
           </Col>
           <Col>
             <Link to="/console/create" className={`btn ${styles.button}`}>
-              🔍 <br />Mod User Search
+              🔍 <br />
+              Mod User Search
             </Link>
           </Col>
         </Row>

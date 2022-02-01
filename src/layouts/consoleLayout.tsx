@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -8,11 +6,10 @@ import styles from "../styles/ConsoleLayout.module.scss";
 
 import { Outlet } from "react-router-dom";
 
-
 export default function ConsoleLayout() {
   return (
     <Container>
-      <Row >
+      <Row>
         <Col md={3} className="p-0 m-0">
           <div className={styles.consoleNavbar}>
             <a href="#test">
@@ -196,7 +193,6 @@ export default function ConsoleLayout() {
                 <a href="#test">Help</a>
               </div>
             </a>
-
 
             <a href="#test">
               <div className={`${styles.adminButton} ${styles.navBarItem}`}>

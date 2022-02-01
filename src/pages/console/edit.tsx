@@ -13,9 +13,7 @@ export default function Edit({ action, type }: Props) {
   const { articleId } = useParams();
   const articleName = articleId || "";
 
-  function save() {
-  
-  }
+  function save() {}
 
   console.log(articleName);
 
@@ -26,53 +24,52 @@ export default function Edit({ action, type }: Props) {
 
   const [articleSelected, setArticleSelected] = useState<boolean>(true);
 
-  const {content, sidebar} = useArticle(
-    articleName.split(" ").join("-").toLowerCase(), false
+  const { content, sidebar } = useArticle(
+    articleName.split(" ").join("-").toLowerCase(),
+    false
   );
 
-  useEffect(() => {    
-
-      const editorArticleInit = async () => {
-        const { Editor } = await import("@toast-ui/editor");
-        const el = document.querySelector("#editor");
-        if (el) {
-          const editor = new Editor({
-            el: el as HTMLElement,
-            events: {
-              change: () => {
-                setPendingMarkdown(editor.getMarkdown());
-              },
+  useEffect(() => {
+    const editorArticleInit = async () => {
+      const { Editor } = await import("@toast-ui/editor");
+      const el = document.querySelector("#editor");
+      if (el) {
+        const editor = new Editor({
+          el: el as HTMLElement,
+          events: {
+            change: () => {
+              setPendingMarkdown(editor.getMarkdown());
             },
-            initialValue: content ? content : " ",
-            minHeight: "500px",
-            height: "500px",
+          },
+          initialValue: content ? content : " ",
+          minHeight: "500px",
+          height: "500px",
 
-            initialEditType: "wysiwyg",
-          });
-        }
-      };
-      editorArticleInit();
+          initialEditType: "wysiwyg",
+        });
+      }
+    };
+    editorArticleInit();
 
-      const editorSidebarInit = async () => {
-        const { Editor } = await import("@toast-ui/editor");
-        const el = document.querySelector("#editorSidebar");
-        if (el) {
-          const editor = new Editor({
-            el: el as HTMLElement,
-            events: {
-              change: () => {
-                setPendingMarkdownSidebar(editor.getMarkdown());
-              },
+    const editorSidebarInit = async () => {
+      const { Editor } = await import("@toast-ui/editor");
+      const el = document.querySelector("#editorSidebar");
+      if (el) {
+        const editor = new Editor({
+          el: el as HTMLElement,
+          events: {
+            change: () => {
+              setPendingMarkdownSidebar(editor.getMarkdown());
             },
-            initialValue: sidebar ? sidebar : " ",
-            minHeight: "500px",
-            height: "500px",
-            initialEditType: "wysiwyg",
-          });
-        }
-      };
-      editorSidebarInit();
-    
+          },
+          initialValue: sidebar ? sidebar : " ",
+          minHeight: "500px",
+          height: "500px",
+          initialEditType: "wysiwyg",
+        });
+      }
+    };
+    editorSidebarInit();
   }, [content]);
 
   return (
@@ -140,11 +137,15 @@ export default function Edit({ action, type }: Props) {
         <Row className={styles.tabs}>
           <Col>
             <div
-              className={!articleSelected ? `${styles.hidden}` : `${styles.editor}`}
+              className={
+                !articleSelected ? `${styles.hidden}` : `${styles.editor}`
+              }
               id="editor"
             ></div>
             <div
-              className={articleSelected ? `${styles.hidden}` : `${styles.editor}`}
+              className={
+                articleSelected ? `${styles.hidden}` : `${styles.editor}`
+              }
               id="editorSidebar"
             ></div>
           </Col>
@@ -157,10 +158,11 @@ export default function Edit({ action, type }: Props) {
           </Col>
           <Col>
             {" "}
-            <Button className={styles.button} onClick={() => window.location.reload() }>
-              <a className="item">
-                Revert
-              </a>
+            <Button
+              className={styles.button}
+              onClick={() => window.location.reload()}
+            >
+              <a className="item">Revert</a>
             </Button>
           </Col>
         </Row>

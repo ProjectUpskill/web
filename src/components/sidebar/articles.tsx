@@ -26,8 +26,10 @@ export default function Articles({ articles, star, name, desc }: Props) {
         <div className={styles.topArticles}>
           <ol>
             {articles.map((a) => (
-                <div><a href={a.url}>{a.title}</a>
-                <hr /></div>
+              <div>
+                <a href={a.url}>{a.title}</a>
+                <hr />
+              </div>
             ))}
           </ol>
         </div>

@@ -73,7 +73,6 @@
   margin-top: 5px;
 }
 
-
 .navBarItem a:hover {
   color: rgb(189, 189, 219);
 }
@@ -87,12 +86,10 @@
 }
 
 .adminButton {
-
   background-color: rgb(170, 30, 30) !important;
 }
 
 .workspacesButton {
-
   border-top: 1px solid;
   border-bottom: 1px solid;
 
@@ -101,8 +98,8 @@
 }
 
 .editor {
-  resize:both;
-  overflow:auto; /* something other than visible */
+  resize: both;
+  overflow: auto; /* something other than visible */
 }
 
 .button,
@@ -137,5 +134,4 @@
 }
 
 .consoleContent {
-
 }
